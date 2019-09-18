@@ -14,8 +14,12 @@ public:
     const char* getData() const { return _data; }
     size_t getLen() const { return _len; }
     size_t getCap() const { return _cap; }
-  
+    
+    
+    void reserve(size_t size);
+    
 private:
+    void append(const char* string, size_t size);
     void grow(size_t size);
 
 private:
@@ -31,10 +35,18 @@ public:
     
     const char* getString() const { return _string; }
     
-    void operator++()
+    void next()
     {
         if(*_string) _string++;
     }
+    
+    const char& peek () const
+    {
+        if(*_string)
+            return _string[1];
+    }
+    
+    bool done() const { return *_string == '\0'; }
     
     const char& operator *() const { return *_string; }
 private:
