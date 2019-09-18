@@ -7,14 +7,14 @@ static unsigned _failures = 0;
                            
                            
                            
-class CStrIterTests {
-    static const char* TEST_STR1 = "hello!";
-    
+struct CStrIterTests {
+
     void test_CStrIter_ind() const {
+        static const char* TEST_STR1 = "hello!";
         CStrIter it(TEST_STR1);
         CHECK(*it);
     }
-}
+};
 
 int main(int argc, char const* argv[])
 {

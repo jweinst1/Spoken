@@ -13,7 +13,7 @@ endif(HAVE_STDINT_HEADER)
 
 find_file(HAVE_WCHAR_HEADER wchar.h)
 if(HAVE_WCHAR_HEADER)
-   message("** wchar.h founnd")
+   message("** wchar.h found")
    add_definitions(-DHAVE_WCHAR_H)
 else(HAVE_WCHAR_HEADER)
    message("** wchar.h not found")
