@@ -18,10 +18,15 @@ class CStrIter {
 public:
     CStrIter(const char* string);
     CStrIter(const CStrIter& other);
+    
+    const char* getString() const { return _string; }
+    
     void operator++()
     {
         if(*_string) _string++;
     }
+    
+    const char& operator *() const { return *_string; }
 private:
    const char* _string;   
 };

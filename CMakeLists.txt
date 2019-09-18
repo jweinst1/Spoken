@@ -28,3 +28,4 @@ if(WITH_testing MATCHES ON)
 endif(WITH_testing MATCHES ON)
 
 
+add_subdirectory(util)
