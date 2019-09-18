@@ -8,6 +8,7 @@
 class CStr {
 public:
     CStr();
+    CStr(const char* string);
     ~CStr();
     const char& operator *() const { return *_data; }
     
@@ -15,6 +16,10 @@ public:
     size_t getLen() const { return _len; }
     size_t getCap() const { return _cap; }
     
+    const char& operator[](size_t index) const
+    {
+        return (index < _cap) ? _data[index] : '\0';
+    }
     
     void reserve(size_t size);
     

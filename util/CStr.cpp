@@ -1,4 +1,5 @@
 #include "CStr.h"
+#include <cstring>
 
 #ifndef CSTR_DEFAULT_CAPACITY
 #define CSTR_DEFAULT_CAPACITY 25
@@ -13,6 +14,15 @@ CStr::CStr(): _cap(CSTR_DEFAULT_CAPACITY),
               _data(static_cast<char*>(calloc(1, CSTR_DEFAULT_CAPACITY + 1)))
 {
     
+}
+
+CStr::CStr(const char* string)
+{
+    _len = 0;
+    _cap = strlen(string) + 5;
+    _data = static_cast<char*>(calloc(1, _cap + 1));
+    while(*string)
+        _data[_len++] = *string++;
 }
 
 CStr::~CStr()
