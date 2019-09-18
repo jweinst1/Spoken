@@ -17,6 +17,7 @@ if(MSVC)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif(MSVC)
 
+# Check for availability of headers c95 or later
 include(build/header_check.cmake)
 
 # Options
