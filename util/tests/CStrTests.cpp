@@ -12,7 +12,7 @@ static unsigned _failures = 0;
 struct CStrTests {
     
     void test_CStr() const {
-        CStr a();
+        CStr a;
         CHECK(a.getLen() == 0);
         CHECK(a[0] == '\0');
     }
@@ -20,7 +20,15 @@ struct CStrTests {
     void test_CStr2(const char* input) const {
         CStr a(input);
         CHECK(a.getLen() == strlen(input));
-        CHECK(strcomp(input, a.getData()) == 0);
+        CHECK(strcmp(input, a.getData()) == 0);
+    }
+    
+    void test_copy(const char* input) const {
+        CStr a;
+        CStr b(input);
+        a = b;
+        CHECK(a.getLen() == b.getLen());
+        CHECK(strcmp(b.getData(), a.getData()) == 0);
     }
 }; 
                            
@@ -39,7 +47,9 @@ int main(int argc, char const* argv[])
     CStrTests strTests;
     
     strTests.test_CStr();
-    strTests.test_CStr2();
+    strTests.test_CStr2("foo");
+    strTests.test_copy("abcd");
+    
     iterTests.test_CStrIter_ind();
     return _failures == 0 ? 0 : 3;
 }

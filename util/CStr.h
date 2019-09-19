@@ -3,12 +3,16 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 
 
 class CStr {
 public:
     CStr();
     CStr(const char* string);
+    CStr(const CStr& other);
+    
+    CStr& operator=(const CStr& other);
     ~CStr();
     const char& operator *() const { return *_data; }
     
@@ -16,12 +20,18 @@ public:
     size_t getLen() const { return _len; }
     size_t getCap() const { return _cap; }
     
-    const char& operator[](size_t index) const
+    const char operator[](size_t index) const
     {
         return (index < _cap) ? _data[index] : '\0';
     }
     
     void reserve(size_t size);
+    
+    CStr& operator<<(const char* string)
+    {
+        append(string, strlen(string));
+        return *this;
+    }
     
 private:
     void append(const char* string, size_t size);
