@@ -56,7 +56,7 @@ CStr::~CStr()
 void CStr::grow(size_t size)
 {
     size++; // null safety
-    while((_cap - _len) > size) {
+    while((_cap - _len) < size) {
 #ifdef CSTR_GROW_EXP_FACTOR
     _cap *= _cap;
 #else
@@ -77,7 +77,7 @@ void CStr::reserve(size_t size)
 
 void CStr::append(const char* string, size_t size)
 {
-    reserve(size);
+    grow(size);
     while(*string && size--)
         _data[_len++] = *string++;
 }

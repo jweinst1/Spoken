@@ -30,6 +30,12 @@ struct CStrTests {
         CHECK(a.getLen() == b.getLen());
         CHECK(strcmp(b.getData(), a.getData()) == 0);
     }
+    
+    void test_append() const {
+        CStr a("foo");
+        a << "doom";
+        CHECK(strcmp(a.getData(), "foodoom") == 0);
+    }
 }; 
                            
 struct CStrIterTests {
@@ -49,6 +55,7 @@ int main(int argc, char const* argv[])
     strTests.test_CStr();
     strTests.test_CStr2("foo");
     strTests.test_copy("abcd");
+    strTests.test_append();
     
     iterTests.test_CStrIter_ind();
     return _failures == 0 ? 0 : 3;
