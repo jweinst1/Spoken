@@ -29,7 +29,9 @@ public:
     {
         return ( index >= _size) ? '\0' : _contents[index];
     }
-    
+    /**
+     * Does not compare based off file path, only the contents
+     */
     bool operator==(const FileStr& other) const
     {
         return (_size == other._size) && (strcmp(_contents, other._contents) == 0);
