@@ -20,6 +20,22 @@ FileStr::FileStr(const char* pathname)
         char* buf = new char[_size + 1]();
         fread(buf, _size, 1, fp);
         _contents = buf;
+        fclose(fp);
+    }
+}
+
+FileStr::FileStr(FILE* fp)
+{
+    if(fp == NULL) {
+        _contents = nullptr;
+        _size = 0;
+    } else {
+        rewind(fp);
+        __getFileSize(fp, &_size);
+        char* buf = new char[_size + 1]();
+        fread(buf, _size, 1, fp);
+        _contents = buf;
+        fclose(fp);
     }
 }
 
