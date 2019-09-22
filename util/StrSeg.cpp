@@ -44,7 +44,7 @@ StrSeg& StrSeg::operator=(const StrSeg& other)
     if(this != &other) {
         // If the current seg is large enough, reuse memory.
         if(_size < other._size) {
-            delete[] _data;
+            free(_data);
             _size = other._size;
             _data = ALLOC_CHARS(_size);
         }
@@ -59,7 +59,7 @@ StrSeg& StrSeg::operator=(const char* string)
 {
     size_t slen = strlen(string);
     if(_size < slen) {
-        delete[] _data;
+         free(_data);
         _size = slen;
         _data = ALLOC_CHARS(_size + 1);
     }
