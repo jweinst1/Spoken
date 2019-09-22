@@ -9,3 +9,8 @@ add_test(CStrTests CStrTests)
 add_executable(FileStrTests FileStrTests.cpp)
 target_link_libraries(FileStrTests PUBLIC spokenutil)
 add_test(FileStrTests FileStrTests)
+
+
+# add_executable(StrSegTests StrSegTests.cpp)
+# target_link_libraries(StrSegTests PUBLIC spokenutil)
+# add_test(StrSegTests StrSegTests)

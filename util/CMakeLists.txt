@@ -3,6 +3,7 @@
 set(SPOKEN_UTIL_SOURCES
     CStr.cpp
     FileStr.cpp
+    StrSeg.cpp
 )
 
 # Definitions
@@ -12,4 +13,6 @@ add_definitions(-DCSTR_GROW_EXP_FACTOR)
 
 add_library(spokenutil STATIC "${SPOKEN_UTIL_SOURCES}")
 
-add_subdirectory(tests)
+if(WITH_testing MATCHES ON)
+    add_subdirectory(tests)
+endif(WITH_testing MATCHES ON)
