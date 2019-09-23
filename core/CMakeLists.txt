@@ -8,5 +8,5 @@
 add_definitions(-DSPOKEN_LINE_MAX_LENGTH=1024)
 
 SET(SPOKEN_CORE_LIB_SOURCES
-
+     line.c
 )
